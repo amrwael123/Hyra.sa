@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HYRA SA</title>
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  #hyra-x {
+    --hyra-bg: #05080F;
+    --hyra-panel: #0A1122;
+    --hyra-card: rgba(15, 23, 46, 0.72);
+    --hyra-line: rgba(120, 150, 220, 0.12);
+    --hyra-accent: #2B5CD2;
+    --hyra-accent-2: #5B8DEF;
+    --hyra-text: #EEF2FA;
+    --hyra-muted: #7E8CA8;
+    font-family: 'Tajawal', -apple-system, sans-serif;
+    background:
+      radial-gradient(1100px 520px at 80% -4%, rgba(43, 92, 210, 0.16), transparent 60%),
+      radial-gradient(800px 460px at 8% 34%, rgba(43, 92, 210, 0.06), transparent 60%),
+      var(--hyra-bg);
+    color: var(--hyra-text);
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+  body { margin: 0; background: #05080F; }
+  #hyra-x *, #hyra-x *::before, #hyra-x *::after { box-sizing: border-box; margin: 0; }
+  #hyra-x img { max-width: 100%; height: auto; display: block; }
+  #hyra-x a { text-decoration: none; color: inherit; }
+  #hyra-x svg { width: 1.1em; height: 1.1em; flex: none; }
+
+  #hyra-x .hyra-container { max-width: 1160px; margin-inline: auto; padding-inline: 20px; }
+  #hyra-x .hyra-container--narrow { max-width: 800px; }
+  #hyra-x .hyra-section { padding: 64px 0; }
+  #hyra-x .hyra-band { background: linear-gradient(180deg, transparent, rgba(10, 17, 34, 0.85) 12%, rgba(10, 17, 34, 0.85) 88%, transparent); }
+  #hyra-x .hyra-section__head { text-align: center; margin-bottom: 40px; }
+  #hyra-x .hyra-h2 { font-size: clamp(24px, 3.6vw, 34px); font-weight: 800; text-align: center; letter-spacing: -0.2px; }
+  #hyra-x .hyra-sub { color: var(--hyra-muted); font-size: 16px; margin-top: 8px; text-align: center; }
+  #hyra-x .hyra-accent { color: var(--hyra-accent-2); }
+  #hyra-x .hyra-eyebrow { display: inline-block; color: var(--hyra-muted); font-weight: 700; font-size: 14px; margin-bottom: 14px; }
+  #hyra-x .hyra-eyebrow--plain { color: var(--hyra-accent-2); }
+
+  #hyra-x .hyra-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-family: inherit; font-weight: 700; font-size: 15.5px; padding: 12px 30px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  #hyra-x .hyra-btn--primary { background: linear-gradient(180deg, #3671E8, #2557C7); color: #fff; box-shadow: 0 6px 22px rgba(43, 92, 210, 0.4), inset 0 1px 0 rgba(255,255,255,0.18); }
+  #hyra-x .hyra-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(43, 92, 210, 0.5), inset 0 1px 0 rgba(255,255,255,0.18); }
+  #hyra-x .hyra-btn--ghost { background: rgba(255,255,255,0.03); border-color: var(--hyra-line); color: var(--hyra-text); border-style: solid; }
+  #hyra-x .hyra-btn--ghost:hover { background: rgba(255,255,255,0.07); }
+  #hyra-x .hyra-btn--sm { padding: 8px 22px; font-size: 14px; }
+  #hyra-x .hyra-btn--lg { padding: 14px 44px; font-size: 17px; }
+  #hyra-x .hyra-btn__play { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid var(--hyra-line); }
+  #hyra-x .hyra-btn__play svg { width: 12px; height: 12px; transform: scaleX(-1); }
+
+  #hyra-x .hyra-announce { background: rgba(7, 13, 28, 0.55); text-align: center; padding: 8px 16px; font-size: 13px; font-weight: 500; color: #A9B7D4; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+  #hyra-x .hyra-topbar { position: fixed; top: 0; inset-inline: 0; z-index: 60; width: 100%; }
+
+  #hyra-x .hyra-page-content { padding-top: 100px; }
+  @media (max-width: 900px) {
+    #hyra-x .hyra-page-content { padding-top: 76px; }
+  }
+
+  #hyra-x .hyra-header {
+    position: relative;
+    background: linear-gradient(180deg, rgba(20, 28, 52, 0.55), rgba(8, 13, 26, 0.45));
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 10px 30px rgba(0,0,0,0.28);
+  }
+  #hyra-x .hyra-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 35%);
+    pointer-events: none;
+  }
+  #hyra-x .hyra-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 13px; }
+  #hyra-x .hyra-logo { font-size: 23px; font-weight: 900; letter-spacing: 3px; display: flex; align-items: center; }
+  #hyra-x .hyra-logo svg { width: auto; height: 30px; }
+  #hyra-x .hyra-nav { display: flex; gap: 28px; font-size: 14.5px; font-weight: 500; color: var(--hyra-muted); }
+  #hyra-x .hyra-nav a:hover, #hyra-x .hyra-nav a.is-active { color: var(--hyra-text); }
+  #hyra-x .hyra-nav a.is-active { position: relative; font-weight: 700; }
+  #hyra-x .hyra-nav a.is-active::after { content: ''; position: absolute; right: 0; left: 0; bottom: -8px; height: 2px; border-radius: 2px; background: var(--hyra-accent-2); }
+  #hyra-x .hyra-header__actions { display: flex; align-items: center; gap: 12px; }
+  #hyra-x .hyra-cart { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #fff; color: #0A1122; }
+  #hyra-x .hyra-cart svg { width: 17px; height: 17px; }
+  #hyra-x .hyra-nav-toggle { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--hyra-line); background: rgba(255,255,255,0.04); color: var(--hyra-text); cursor: pointer; padding: 0; }
+  #hyra-x .hyra-nav-toggle svg { transition: transform .2s ease; }
+  #hyra-x .hyra-nav-toggle.is-open svg { transform: rotate(180deg); }
+  #hyra-x .hyra-nav {
+    transition: max-height .25s ease, opacity .2s ease;
+  }
+
+  #hyra-x .hyra-hero { position: relative; padding: 56px 0 48px; }
+  #hyra-x .hyra-hero__glow { position: absolute; inset: 0; background: radial-gradient(640px 360px at 24% 18%, rgba(43, 92, 210, 0.14), transparent 65%); pointer-events: none; }
+  #hyra-x .hyra-hero__grid { position: relative; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center; }
+  #hyra-x .hyra-hero__title { font-size: clamp(30px, 4.8vw, 50px); font-weight: 900; line-height: 1.3; }
+  #hyra-x .hyra-hero__desc { color: var(--hyra-muted); font-size: 16.5px; margin-top: 16px; max-width: 46ch; }
+  #hyra-x .hyra-hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  #hyra-x .hyra-hero__img, #hyra-x .hyra-showcase__img { border-radius: 20px; }
+
+  #hyra-x .hyra-trust { display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 48px; padding: 16px 8px; border-block: 1px solid var(--hyra-line); border-radius: 0; }
+  #hyra-x .hyra-trust__item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: #C9D4EC; padding-inline: 22px; border-inline-start: 1px solid var(--hyra-line); }
+  #hyra-x .hyra-trust__item:first-child { border-inline-start: 0; }
+  #hyra-x .hyra-trust__item svg { color: var(--hyra-accent-2); width: 21px; height: 21px; }
+  #hyra-x .hyra-trust__item small { display: block; font-weight: 400; color: var(--hyra-muted); font-size: 11px; }
+  #hyra-x .hyra-trust--footer { margin-top: 44px; justify-content: center; border-block: 0; }
+
+  #hyra-x .hyra-compare { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: var(--hyra-card); border: 1px solid var(--hyra-line); border-radius: 26px; padding: 20px; }
+  #hyra-x .hyra-compare__card { display: flex; flex-direction: column; align-items: center; border-radius: 18px; padding: 16px; }
+  #hyra-x .hyra-compare__card--without { background: rgba(255,255,255,0.02); }
+  #hyra-x .hyra-compare__card--with { background: rgba(43, 92, 210, 0.07); box-shadow: inset 0 0 0 1px rgba(91, 141, 239, 0.28); }
+  #hyra-x .hyra-compare__img { width: 100%; border-radius: 14px; margin-top: 12px; aspect-ratio: 16/11; object-fit: cover; object-position: 50% 25%; }
+  #hyra-x .hyra-compare__vs { position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); z-index: 2; width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; font-weight: 900; font-size: 15px; color: #fff; background: linear-gradient(180deg, #3671E8, #2557C7); box-shadow: 0 0 0 7px var(--hyra-bg), 0 10px 24px rgba(43, 92, 210, 0.55); }
+  #hyra-x .hyra-badge { display: inline-block; font-size: 13px; font-weight: 700; padding: 6px 20px; border-radius: 999px; }
+  #hyra-x .hyra-badge--dark { background: rgba(255,255,255,0.06); color: var(--hyra-muted); border: 1px solid var(--hyra-line); }
+  #hyra-x .hyra-badge--blue { background: linear-gradient(180deg, #3671E8, #2557C7); color: #fff; box-shadow: 0 4px 14px rgba(43,92,210,0.4); }
+  #hyra-x .hyra-list { list-style: none; padding: 0; margin-top: 16px; display: grid; gap: 11px; font-size: 14.5px; width: 100%; }
+  #hyra-x .hyra-list li { display: flex; align-items: center; gap: 10px; }
+  #hyra-x .hyra-list li::before { flex: none; display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; font-size: 11px; font-weight: 900; }
+  #hyra-x .hyra-list--x li { color: var(--hyra-muted); }
+  #hyra-x .hyra-list--x li::before { content: '✕'; background: rgba(148, 163, 184, 0.12); color: #94A3B8; }
+  #hyra-x .hyra-list--check li::before { content: '✓'; background: linear-gradient(180deg, #3671E8, #2557C7); color: #fff; }
+
+  #hyra-x .hyra-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  #hyra-x .hyra-feature { text-align: center; padding: 8px 18px; border-inline-start: 1px solid var(--hyra-line); }
+  #hyra-x .hyra-feature:first-child { border-inline-start: 0; }
+  #hyra-x .hyra-feature__icon { width: 62px; height: 62px; display: grid; place-items: center; margin: 0 auto 14px; font-size: 26px; border-radius: 50%; background: radial-gradient(circle at 50% 30%, rgba(43,92,210,0.28), rgba(43,92,210,0.08)); box-shadow: inset 0 0 0 1px rgba(91, 141, 239, 0.3), 0 0 24px rgba(43,92,210,0.15); }
+  #hyra-x .hyra-feature h3 { font-size: 15.5px; font-weight: 800; margin-bottom: 7px; }
+  #hyra-x .hyra-feature p { color: var(--hyra-muted); font-size: 13px; line-height: 1.7; }
+
+  #hyra-x .hyra-showcase__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 44px; align-items: center; }
+  #hyra-x .hyra-showcase__chips { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
+  #hyra-x .hyra-chip { display: flex; flex-direction: column; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: #C9D4EC; }
+  #hyra-x .hyra-chip i { font-style: normal; font-size: 20px; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,0.04); box-shadow: inset 0 0 0 1px var(--hyra-line); }
+
+  #hyra-x .hyra-specs { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; }
+  #hyra-x .hyra-specs__img { border-radius: 14px; }
+  #hyra-x .hyra-specs__list { list-style: none; padding: 0; display: grid; }
+  #hyra-x .hyra-specs__list li { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 2px; border-bottom: 1px solid var(--hyra-line); }
+  #hyra-x .hyra-specs__list li:last-child { border-bottom: 0; }
+  #hyra-x .hyra-specs__list strong { display: block; font-size: 15px; font-weight: 800; }
+  #hyra-x .hyra-specs__list span { color: var(--hyra-muted); font-size: 13px; }
+  #hyra-x .hyra-specs__list em { font-style: normal; font-size: 18px; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; background: rgba(43,92,210,0.1); box-shadow: inset 0 0 0 1px var(--hyra-line); }
+
+  #hyra-x .hyra-lifestyle { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  #hyra-x .hyra-life-card { text-align: right; }
+  #hyra-x .hyra-life-card__img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; margin-bottom: 12px; transition: transform .18s ease; }
+  #hyra-x .hyra-life-card:hover .hyra-life-card__img { transform: translateY(-4px); }
+  #hyra-x .hyra-life-card h3 { font-size: 15.5px; font-weight: 800; margin-bottom: 4px; }
+  #hyra-x .hyra-life-card p { color: var(--hyra-muted); font-size: 13px; }
+
+  #hyra-x .hyra-reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  #hyra-x .hyra-review { background: var(--hyra-card); border: 1px solid var(--hyra-line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px; text-align: center; }
+  #hyra-x .hyra-stars { color: #F5B301; font-size: 16px; letter-spacing: 3px; }
+  #hyra-x .hyra-review__quote { font-size: 14.5px; color: #D6DEF0; flex: 1; }
+  #hyra-x .hyra-review__author { display: flex; align-items: center; justify-content: center; gap: 9px; font-size: 13.5px; font-weight: 700; color: var(--hyra-muted); }
+  #hyra-x .hyra-review__avatar { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(180deg, #3671E8, #2557C7); color: #fff; font-size: 14px; }
+
+  #hyra-x .hyra-faq { display: grid; gap: 10px; }
+  #hyra-x .hyra-faq__item { background: rgba(255,255,255,0.025); border: 1px solid var(--hyra-line); border-radius: 12px; overflow: hidden; }
+  #hyra-x .hyra-faq__item summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 15px 18px; font-weight: 700; font-size: 15px; cursor: pointer; list-style: none; }
+  #hyra-x .hyra-faq__item summary::-webkit-details-marker { display: none; }
+  #hyra-x .hyra-faq__item summary svg { color: var(--hyra-muted); transition: transform .2s ease; }
+  #hyra-x .hyra-faq__item[open] summary svg { transform: rotate(180deg); }
+  #hyra-x .hyra-faq__item p { padding: 0 18px 16px; color: var(--hyra-muted); font-size: 14px; }
+
+  #hyra-x .hyra-final { position: relative; padding: 72px 0 52px; background: linear-gradient(180deg, transparent, #070D1C 30%); }
+  #hyra-x .hyra-final__glow { position: absolute; inset: 0; background: radial-gradient(560px 280px at 50% 100%, rgba(43, 92, 210, 0.16), transparent 70%); pointer-events: none; }
+  #hyra-x .hyra-final__grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  #hyra-x .hyra-final__img { border-radius: 20px; }
+  #hyra-x .hyra-final .hyra-btn { margin-top: 20px; }
+
+  #hyra-x .hyra-img-placeholder { border: 1px dashed rgba(120, 150, 220, 0.3); border-radius: 20px; overflow: hidden; background: rgba(43, 92, 210, 0.04); display:flex; align-items:center; justify-content:center; min-height:280px; color:#4a5a86; font-size:13px; }
+  #hyra-x .hyra-img-placeholder--wide { min-height: 220px; }
+  #hyra-x .hyra-img-placeholder--card { min-height: 160px; border-radius:16px; }
+
+  /* Checkout / cart overlay */
+  #hyra-x .hyra-checkout { position: fixed; inset: 0; z-index: 100; background: radial-gradient(1100px 520px at 80% -4%, rgba(43, 92, 210, 0.16), transparent 60%), var(--hyra-bg); overflow-y: auto; opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .25s ease, transform .25s ease, visibility .25s; }
+  #hyra-x .hyra-checkout.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+  #hyra-x .hyra-checkout__inner { max-width: 1040px; margin-inline: auto; padding: 28px 20px 72px; }
+  #hyra-x .hyra-checkout__back { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.04); border: 1px solid var(--hyra-line); color: var(--hyra-text); font-family: inherit; font-weight: 700; font-size: 14px; padding: 9px 18px; border-radius: 999px; cursor: pointer; margin-bottom: 26px; }
+  #hyra-x .hyra-checkout__back:hover { background: rgba(255,255,255,0.08); }
+  #hyra-x .hyra-checkout__back svg { width: 16px; height: 16px; transform: scaleX(-1); }
+  #hyra-x .hyra-checkout__head { text-align: center; margin-bottom: 30px; }
+  #hyra-x .hyra-checkout__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 26px; align-items: start; }
+
+  #hyra-x .hyra-checkout__tabs { display: flex; gap: 8px; background: rgba(255,255,255,0.04); border: 1px solid var(--hyra-line); border-radius: 999px; padding: 5px; margin-bottom: 22px; }
+  #hyra-x .hyra-checkout__tab { flex: 1; border: 0; background: transparent; color: var(--hyra-muted); font-family: inherit; font-weight: 700; font-size: 14px; padding: 10px 12px; border-radius: 999px; cursor: pointer; transition: background .15s ease, color .15s ease; }
+  #hyra-x .hyra-checkout__tab.is-active { background: linear-gradient(180deg, #3671E8, #2557C7); color: #fff; box-shadow: 0 6px 18px rgba(43,92,210,0.35); }
+
+  #hyra-x .hyra-checkout__panel { display: none; background: var(--hyra-card); border: 1px solid var(--hyra-line); border-radius: 22px; padding: 26px; backdrop-filter: blur(10px); }
+  #hyra-x .hyra-checkout__panel.is-active { display: block; }
+  #hyra-x .hyra-checkout__hint { color: var(--hyra-muted); font-size: 13.5px; margin-bottom: 18px; }
+  #hyra-x .hyra-checkout__subtitle { font-size: 15px; font-weight: 800; margin: 22px 0 12px; }
+
+  #hyra-x .hyra-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+  #hyra-x .hyra-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  #hyra-x .hyra-field label { font-size: 13px; font-weight: 700; color: #C9D4EC; }
+  #hyra-x .hyra-field input, #hyra-x .hyra-field textarea {
+    font-family: inherit; font-size: 14.5px; color: var(--hyra-text); background: rgba(255,255,255,0.04);
+    border: 1px solid var(--hyra-line); border-radius: 12px; padding: 11px 14px; outline: none; resize: none;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  #hyra-x .hyra-field input:focus, #hyra-x .hyra-field textarea:focus { border-color: var(--hyra-accent-2); background: rgba(255,255,255,0.07); }
+  #hyra-x .hyra-field input::placeholder, #hyra-x .hyra-field textarea::placeholder { color: #5a6688; }
+
+  #hyra-x .hyra-radio { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--hyra-line); border-radius: 12px; margin-bottom: 9px; cursor: pointer; font-size: 14.5px; font-weight: 600; transition: border-color .15s ease, background .15s ease; }
+  #hyra-x .hyra-radio:has(input:checked) { border-color: var(--hyra-accent-2); background: rgba(43, 92, 210, 0.08); }
+  #hyra-x .hyra-radio input { accent-color: var(--hyra-accent-2); width: 17px; height: 17px; flex: none; }
+  #hyra-x .hyra-radio em { font-style: normal; color: var(--hyra-accent-2); font-weight: 800; margin-inline-start: 6px; }
+
+  #hyra-x .hyra-checkout__submit { width: 100%; margin-top: 22px; }
+  #hyra-x .hyra-checkout__secure { text-align: center; color: var(--hyra-muted); font-size: 12.5px; margin-top: 12px; }
+
+  #hyra-x .hyra-checkout__success { text-align: center; padding: 30px 10px; }
+  #hyra-x .hyra-checkout__success-icon { width: 62px; height: 62px; margin: 0 auto 18px; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(180deg, #3671E8, #2557C7); color: #fff; font-size: 28px; font-weight: 900; }
+  #hyra-x .hyra-checkout__success h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  #hyra-x .hyra-checkout__success p { color: var(--hyra-muted); font-size: 14px; margin-bottom: 22px; }
+
+  #hyra-x .hyra-checkout__summary { background: var(--hyra-card); border: 1px solid var(--hyra-line); border-radius: 22px; padding: 22px; position: sticky; top: 20px; }
+  #hyra-x .hyra-checkout__summary h3 { font-size: 15.5px; font-weight: 800; margin-bottom: 16px; }
+  #hyra-x .hyra-checkout__product { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--hyra-line); margin-bottom: 14px; flex-wrap: wrap; }
+  #hyra-x .hyra-checkout__product-thumb { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font-size: 24px; overflow: hidden; flex: none; background: rgba(43, 92, 210, 0.06); border: 1px dashed rgba(120, 150, 220, 0.35); box-shadow: inset 0 0 0 1px rgba(91,141,239,0.15); }
+  #hyra-x .hyra-checkout__product-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #hyra-x .hyra-checkout__product-thumb-placeholder { font-size: 9px; color: #5a6688; text-align: center; line-height: 1.3; padding: 0 4px; }
+  #hyra-x .hyra-checkout__product-info { display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; flex: 1; min-width: 120px; }
+  #hyra-x .hyra-checkout__product-info span { color: var(--hyra-muted); font-size: 12.5px; }
+  #hyra-x .hyra-checkout__qty { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--hyra-line); border-radius: 999px; padding: 5px 6px; }
+  #hyra-x .hyra-checkout__qty-btn { width: 24px; height: 24px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.07); color: var(--hyra-text); font-size: 15px; font-weight: 800; line-height: 1; cursor: pointer; display: grid; place-items: center; padding: 0; }
+  #hyra-x .hyra-checkout__qty-btn:hover { background: var(--hyra-accent-2); color: #fff; }
+  #hyra-x .hyra-checkout__qty-btn:disabled { opacity: .35; cursor: not-allowed; }
+  #hyra-x .hyra-checkout__qty-btn:disabled:hover { background: rgba(255,255,255,0.07); color: var(--hyra-text); }
+  #hyra-x .hyra-checkout__qty-value { min-width: 16px; text-align: center; font-size: 14px; font-weight: 700; }
+  #hyra-x .hyra-checkout__row { display: flex; align-items: center; justify-content: space-between; font-size: 13.5px; color: var(--hyra-muted); padding: 7px 0; }
+  #hyra-x .hyra-checkout__row--total { border-top: 1px solid var(--hyra-line); margin-top: 8px; padding-top: 14px; font-size: 15.5px; font-weight: 800; color: var(--hyra-text); }
+
+  @media (max-width: 900px) {
+    #hyra-x .hyra-checkout__grid { grid-template-columns: 1fr; }
+    #hyra-x .hyra-field-row { grid-template-columns: 1fr; }
+    #hyra-x .hyra-checkout__summary { position: static; }
+  }
+
+  @media (max-width: 900px) {
+    #hyra-x .hyra-nav-toggle { display: grid; }
+    #hyra-x .hyra-header { position: relative; }
+    #hyra-x .hyra-nav {
+      position: absolute; top: 100%; inset-inline: 0; z-index: 40;
+      flex-direction: column; gap: 0; padding: 6px 20px 14px;
+      background: rgba(8, 13, 26, 0.97); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--hyra-line);
+      max-height: 0; opacity: 0; overflow: hidden; display: flex;
+    }
+    #hyra-x .hyra-nav.is-open { max-height: 300px; opacity: 1; padding-block: 10px 16px; }
+    #hyra-x .hyra-nav a { padding: 12px 4px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    #hyra-x .hyra-nav a:last-child { border-bottom: 0; }
+    #hyra-x .hyra-nav a.is-active::after { display: none; }
+    #hyra-x .hyra-hero__grid, #hyra-x .hyra-showcase__grid, #hyra-x .hyra-specs, #hyra-x .hyra-final__grid { grid-template-columns: 1fr; }
+    #hyra-x .hyra-hero__media { order: -1; }
+    #hyra-x .hyra-features { grid-template-columns: repeat(2, 1fr); gap: 22px 0; }
+    #hyra-x .hyra-feature:nth-child(odd) { border-inline-start: 0; }
+    #hyra-x .hyra-lifestyle { grid-template-columns: repeat(2, 1fr); }
+    #hyra-x .hyra-reviews { grid-template-columns: 1fr; }
+    #hyra-x .hyra-compare { grid-template-columns: 1fr; }
+    #hyra-x .hyra-compare__vs { position: static; transform: none; margin: -8px auto; }
+    #hyra-x .hyra-section { padding: 48px 0; }
+    #hyra-x .hyra-trust { justify-content: center; gap: 10px 0; }
+  }
+  @media (max-width: 520px) {
+    #hyra-x .hyra-lifestyle { grid-template-columns: 1fr; }
+    #hyra-x .hyra-trust__item { padding-inline: 12px; font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hyra-page" id="hyra-x" dir="rtl">
+
+  <div class="hyra-topbar">
+    <div class="hyra-announce"><span>🚚 شحن سريع لجميع الطلبات داخل السعودية</span></div>
+
+    <header class="hyra-header">
+      <div class="hyra-container hyra-header__inner">
+      <a href="#home" class="hyra-logo" aria-label="HYRA">
+        <svg viewBox="0 0 1005.03 260.29" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>.hyra-logo-fill { fill: #3874ff; }</style>
+          </defs>
+          <g>
+            <g>
+              <path class="hyra-logo-fill" d="M171.19,258.01c-5.7.72-12.7-4.22-17.28-8.4-10.42-9.98-10.58-22.3-3.68-34.38,5.4-11.33,19.64-25.35,16.95-38.17-3.57-11.35-18.32-11.85-28.21-9.05-13.21,3.38-22.28,13.11-32.36,22.03-6.39,5.59-13.12,10.53-20.35,15.07-13.87,8.82-30.07,17.06-43.99,26.2-6.44,4.28-11.95,9.23-17.27,14.65-5.54,5.52-12.39,13.78-16.27,14.27-6.56.92-8.33-10.17-8.7-15.58-.39-9.03,2.42-18.43,8.16-25.43,4.04-4.76,8.97-7.54,15.48-11.17,19.24-10.36,37.44-23.94,51.8-40.33,4.85-5.54,9.73-12.8,13.95-18.15,2.97-3.72,5.84-6.41,8.69-7.35,8.97-3.03,12.54,11.74,17.84,14.33,8.41,4.69,19.49-32.16,23.61-38.72,15.71-33.62,14.54,14.51,28.32,16.62,5.55.17,11.7-6.54,17.08-9.67,4.75-2.91,12.73-7.33,17.72-4.76,2.33,2.37-.59,5.76-1.67,8.66-3.2,5.79-1.15,11.29,1.92,16.77,8.71,15.18,12.64,23.34,2.95,39.83-11.43,19.25-26.7,29.49-29.33,53.59-1.16,5.3.47,18.13-5.32,19.13h-.04Z"/>
+              <path class="hyra-logo-fill" d="M151.82,87.44c-4.5-1-8.41,7.06-10.42,10.44-6.05,10.85-11.2,25.35-18.33,35.09-2.86,3.78-6.63,6.07-10.41,1.96-5.85-6.32-10.34-20.16-20.98-12.81-3.48,2.29-7.23,5.54-11.12,8.05-5.21,3.43-11.26,6.29-17.42,7.68-6.96,1.76-16.45.75-20.73-.81-1.52-.51-3.94-1.37-3.28-2.84.53-.96,2.6-1.87,5.59-2.85,2.31-.76,5.15-1.59,8.22-2.62,4.52-1.5,9.35-3.47,13.62-5.92,19.23-10.36,22.45-30.88,32.59-34.28,7.2-1.9,11.2,9.35,18.74,4.81,3.04-1.85,5.41-4.89,7.37-9.22,2.95-6.79,4.13-17.12-.74-23.06-6.61-7.25-20.71-.85-28.26,2.61-7.96,3.26-30.24,18.28-35.54,13.75-2.61-2.96.03-8.76,3.8-15.65,5.18-8.95,12.62-16.72,20.93-22.86,12.75-9.84,29.13-12.26,45.13-12.38,11.17.02,22.54.61,32.53,4.74,8.36,3.55,14.63,8.76,21.72,13.79,7.84,5.65,15.58,11.32,23.6,17.03,8.63,5.97,17.84,11.44,28.05,13.46,13.3,2.6,26.53-6.56,38.49-10.3,14.53-4.29,7.71,8.98,1.76,17.61-4.45,6.53-10,12.35-16.16,17.32-7.1,5.67-13.4,9.95-21.84,10.73-8.03.71-15.46-2.82-23.06-4.8-5.4-1.41-10.83-1.96-16.19-.78-4.03.87-7.8,2.66-11.36,4.7-6.87,3.73-11.44,8.54-17.71,6.02-9.43-4.25-11.18-25.94-18.55-28.61h-.03Z"/>
+              <path class="hyra-logo-fill" d="M232.61,24.4c.03,18.46-19.78,30.04-35.95,21.38-17.11-9.11-16.83-34.39.49-43.11,16.1-8.2,35.54,3.46,35.47,21.64v.09Z"/>
+            </g>
+            <g>
+              <path class="hyra-logo-fill" d="M1003.31,199.27c-8.6-29.88-31.76-112.26-40.25-141.63-.89-3.15-1.91-6.24-4.68-7.64l-.08-.04c-10.08-2.84-25.18-.78-37.37-1.39-14.71.26-29.71-.6-44.16.48l-.45.05c-5.03.77-6.8,2.94-8.62,8.38-1.98,6.07-3.45,11.96-5.32,18.33-6.39,22.64-13.93,48.95-20.19,71.08-3.13,9.33-3.96,22.79-13.23,12.74-5.98-6.61-14.81-11.31-19.72-18.48-5.19-9.41,19.53-20.67,23.16-35.25l.04-.13c10.36-28.5-22.07-50.96-49.28-54.71-27.66-4.63-56.42-1.71-84.54-2.49h-55.52c-18.33.42-31.31-3.32-36.35,18.36l-.13.44c-4.79,13.51-7.22,29.69-14.18,41.54-4.87,4.95-14.8-40.68-18.09-47.41-.11-.22-.21-.44-.28-.68-5-15.88-21.89-11.51-34.74-12.26h-39.11c-50.23.98-47.4-8.13-47.13,45.49,1.13,21.7-12.6,18.36-29.55,18.69-7.64-.21-18.4.17-19.92-9.37-2.02-13.09.04-30.73-1.34-43.88-.55-11.51-11.24-10.73-19.67-10.91-8.11-.04-18.42-.03-26.23,0-10.73.66-19.85-2.33-18.51,13.01.01.12.02.24.02.35.23,31.27-.34,113.18.14,142.08-.04,9.07,10.62,7.21,16.99,7.66,8.89.02,20.67.1,30.14-.03,9.76,0,17.25-1.22,17.33-13.1.55-8.8.1-21.93.29-31.16-.43-17.15,4.67-19.95,20.61-19.86h.27c10.5.75,25.36-3.04,28.5,8.91.05.2.1.4.13.62,1.79,11.83.34,28.09,1.02,39.89.33,13.37,5.52,14.55,18.34,14.73,5.69.08,12.7.03,19.25.04h.37c8.12-.64,22.19,2,25.59-4.2.34-.62.43-1.2.51-1.87,1.21-11.54-5.09-88.51-1.79-106.04.31-1.65,1.09-5.52,3.37-6.16,2.62-.74,5.83,3.18,7.09,4.71,8.33,10.16,19.63,42.16,23.65,53.89l.07.17c10.54,20.25,1.83,43.95,9.51,55.39.2.29.42.57.67.81,2.88,2.66,7.94,3.15,15.03,3.26,6.9.08,14.02.02,20.95.03,16.14-.39,29.73,3.14,29.3-17.21.3-7.46-.01-15.19.72-22.61.57-9.32,5.78-19.8,9.97-29.89,5.64-13.3,11.73-27.64,17.32-40.84.72-1.5,1.46-3.24,2.22-5.09,2.03-4.92,9.34-3.53,9.46,1.79,0,.11,0,.23.01.34,1.19,33.57-2.33,80.04,1.25,108.08.23,1.81,1.46,3.35,3.19,3.97,8.61,3.05,31.99.84,39.53,1.43h.58c5.95-.28,13.52.55,17.43-4.48.24-.3.43-.65.59-1.01,5.22-12.02-.74-29.32,5.26-41.1,6.75-11.6,25.63-4.1,32.19,4.54,7.8,9.56,5.69,24.98,13.01,34.86l.33.41c4.92,5.61,12.69,6.48,20.1,6.75,11.57.15,23.05.03,34.34.07,15.61-.63,32.67,1.56,48.55-1.46,11.31-2.54,12.27-14.94,20.09-21.44,7.69-6.25,19.83-6.35,27.67-.22,5.87,4.27,7.35,11.95,11.77,17.27,4.36,5.53,13.38,5.82,20.23,5.82,9.24.03,20.86.04,29.01,0,4.44-.17,9.21.2,13.12-1.41,3.79-2.28.8-7.39.16-11.03ZM770.35,106.72c0,13.88-11.25,25.13-25.13,25.13h-3.68c-7.31,0-13.23-5.93-13.23-13.23v-27.54c0-7.31,5.93-13.23,13.23-13.23h3.68c13.88,0,25.13,11.25,25.13,25.13v3.75ZM907.57,148.43l-.12-.11c-5.35-5.07-1.12-14.71.48-21.71l.16-.56c1.08-3.25,4.19-17.87,7.37-15.04,1.15,1.16,1.78,2.98,2.41,4.61,2.1,6.35,5.44,16.79,6.32,24.61,1.45,9.59-9.99,13.41-16.61,8.2Z"/>
+              <g>
+                <path class="hyra-logo-fill" d="M991.27,48.37c-7.59,0-13.76,6.17-13.76,13.76s6.17,13.76,13.76,13.76,13.76-6.17,13.76-13.76-6.17-13.76-13.76-13.76ZM991.27,71.55c-5.2,0-9.42-4.23-9.42-9.42s4.23-9.42,9.42-9.42,9.42,4.23,9.42,9.42-4.23,9.42-9.42,9.42Z"/>
+                <path class="hyra-logo-fill" d="M993.76,62.68v-.1c1.53-.58,2.2-1.55,2.2-2.44,0-1.39-1.56-2.7-4.07-2.7h-5.77v9.41h3.73v-3.12h.61c1.69,0,1.94.96,1.94,3.12h4.03c0-2.27-.97-3.87-2.66-4.16ZM991.68,61.54h-1.83v-.65h1.83c.34,0,.49.17.49.36,0,.16-.1.29-.49.29Z"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </a>
+      <nav class="hyra-nav" id="hyra-nav">
+        <a href="#home" class="is-active">الرئيسية</a>
+        <a href="#features">المميزات</a>
+        <a href="#specs">المواصفات</a>
+        <a href="#faq">الأسئلة الشائعة</a>
+      </nav>
+      <div class="hyra-header__actions">
+        <a href="https://dfal8s.zid.store/auth/login?redirect_to=/checkout" class="hyra-btn hyra-btn--primary hyra-btn--sm">اطلب الآن</a>
+        <a href="https://dfal8s.zid.store/auth/login?redirect_to=/checkout" class="hyra-cart" aria-label="السلة">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </a>
+        <button type="button" class="hyra-nav-toggle" id="hyra-nav-toggle" aria-label="فتح قائمة الروابط" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="hyra-page-content">
+
+  <section class="hyra-hero" id="home">
+    <div class="hyra-hero__glow"></div>
+    <div class="hyra-container hyra-hero__grid">
+      <div class="hyra-hero__content">
+        <span class="hyra-eyebrow">سوار HYRA الذكي</span>
+        <h1 class="hyra-hero__title">
+          استيقظ كل يوم
+          <br>
+          وأنت في <span class="hyra-accent">أفضل</span> حالاتك
+        </h1>
+        <p class="hyra-hero__desc">سوار ذكي يوقظك بلطف في أخف مرحلة من النوم ليساعدك تبدأ يومك بنشاط وتركيز بدون توتر أو إزعاج.</p>
+        <div class="hyra-hero__cta">
+          <a href="https://dfal8s.zid.store/auth/login?redirect_to=/checkout" class="hyra-btn hyra-btn--primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            اطلب الآن
+          </a>
+          <a href="#everything" class="hyra-btn hyra-btn--ghost">
+            شاهد المميزات
+            <span class="hyra-btn__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+        </div>
+      </div>
+      <div class="hyra-hero__media">
+        <img src="images/hero.jpg" alt="سوار HYRA الذكي" class="hyra-hero__img">
+      </div>
+    </div>
+
+    <div class="hyra-container">
+      <div class="hyra-trust">
+        <div class="hyra-trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>دعم سعودي</span></div>
+        <div class="hyra-trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>ضمان سنة</span></div>
+        <div class="hyra-trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>دفع آمن</span></div>
+        <div class="hyra-trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>دعم 24/7</span></div>
+        <div class="hyra-trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>شحن سريع<small>من 1 إلى 3 أيام عمل</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hyra-section hyra-band" id="features">
+    <div class="hyra-container">
+      <div class="hyra-section__head">
+        <h2 class="hyra-h2">فرق النوم ينعكس على يومك</h2>
+        <p class="hyra-sub">سوار HYRA الذكي يصنع الفرق</p>
+      </div>
+      <div class="hyra-compare">
+        <div class="hyra-compare__card hyra-compare__card--without">
+          <span class="hyra-badge hyra-badge--dark">بدون HYRA</span>
+          <img src="images/without-hyra.jpg" alt="بدون HYRA" class="hyra-compare__img">
+          <ul class="hyra-list hyra-list--x">
+            <li>منبه مزعج يقطع نومك فجأة</li>
+            <li>تستيقظ متعب ومنهك</li>
+            <li>تبدأ يومك بتوتر وكسل</li>
+            <li>مزاج سيء طوال اليوم</li>
+          </ul>
+        </div>
+        <div class="hyra-compare__vs">VS</div>
+        <div class="hyra-compare__card hyra-compare__card--with">
+          <span class="hyra-badge hyra-badge--blue">مع HYRA</span>
+          <img src="images/with-hyra.jpg" alt="مع HYRA" class="hyra-compare__img">
+          <ul class="hyra-list hyra-list--check">
+            <li>ينبهك بلطف في أخف مرحلة نوم</li>
+            <li>تستيقظ وأنت في كامل طاقتك</li>
+            <li>تبدأ يومك بنشاط وتركيز</li>
+            <li>مزاج أفضل وإنتاجية أعلى</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hyra-section" id="everything">
+    <div class="hyra-container">
+      <div class="hyra-section__head"><h2 class="hyra-h2">كل ما تحتاجه في سوار واحد</h2></div>
+      <div class="hyra-features">
+        <div class="hyra-feature"><div class="hyra-feature__icon">❤️</div><h3>مراقبة نبض القلب</h3><p>يراقب نبض قلبك على مدار اليوم ويخبرك إذا تغير عن الطبيعي</p></div>
+        <div class="hyra-feature"><div class="hyra-feature__icon">🌙</div><h3>تحليل النوم</h3><p>يحلل مراحل النوم العميق والخفيف ويعطيك تقرير مفصل</p></div>
+        <div class="hyra-feature"><div class="hyra-feature__icon">🏃</div><h3>أكثر من 100 وضع رياضي</h3><p>يدعم جميع الرياضات لتتبع أدق للبيانات</p></div>
+        <div class="hyra-feature"><div class="hyra-feature__icon">🔋</div><h3>بطارية حتى 10 أيام</h3><p>بطارية تدوم حتى 10 أيام بشحنة واحدة</p></div>
+        <div class="hyra-feature"><div class="hyra-feature__icon">💧</div><h3>مقاوم للماء IP68</h3><p>مقاوم للماء والغبار، مناسب للاستخدام اليومي والرياضة</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hyra-section hyra-showcase hyra-band">
+    <div class="hyra-container hyra-showcase__grid">
+      <div class="hyra-showcase__content">
+        <span class="hyra-eyebrow hyra-eyebrow--plain">تصميم بسيط، أداء متطور</span>
+        <h2 class="hyra-h2" style="text-align:right">راحة وخفة تدوم معك طول اليوم</h2>
+        <p class="hyra-sub" style="text-align:right;margin:0">تصميم أنيق وخفيف يناسب جميع الأذواق، وشاشة LED واضحة تعرض الوقت والتنبيهات بلمسة بسيطة.</p>
+        <div class="hyra-showcase__chips">
+          <span class="hyra-chip"><i>⌚</i>مصمم لثبات</span>
+          <span class="hyra-chip"><i>🪶</i>خفيف ومريح</span>
+          <span class="hyra-chip"><i>💡</i>شاشة LED واضحة</span>
+        </div>
+      </div>
+      <div class="hyra-showcase__media">
+        <img src="images/showcase.jpg" alt="راحة وخفة HYRA" class="hyra-showcase__img">
+      </div>
+    </div>
+  </section>
+
+  <section class="hyra-section" id="specs">
+    <div class="hyra-container">
+      <div class="hyra-section__head"><h2 class="hyra-h2">مواصفات السوار</h2></div>
+      <div class="hyra-specs">
+        <div class="hyra-specs__media"><div class="hyra-img-placeholder">صورة (specs)</div></div>
+        <ul class="hyra-specs__list">
+          <li><div><strong>الشاشة</strong><span>LED عالية الوضوح</span></div><em>💡</em></li>
+          <li><div><strong>البطارية</strong><span>تدوم حتى 10 أيام</span></div><em>🔋</em></li>
+          <li><div><strong>مقاومة الماء</strong><span>IP68 مقاوم للماء والغبار</span></div><em>💧</em></li>
+          <li><div><strong>محيط المعصم</strong><span>130mm – 235mm</span></div><em>📏</em></li>
+          <li><div><strong>العرض</strong><span>16.5mm</span></div><em>↔️</em></li>
+          <li><div><strong>الطول</strong><span>77mm</span></div><em>↕️</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="hyra-section">
+    <div class="hyra-container">
+      <div class="hyra-section__head"><h2 class="hyra-h2">يناسب كل أسلوب حياة</h2></div>
+      <div class="hyra-lifestyle">
+        <div class="hyra-life-card"><div class="hyra-img-placeholder hyra-img-placeholder--card">صورة</div><h3>في النادي</h3><p>يتابع تمرينك ونبضك لحظة بلحظة</p></div>
+        <div class="hyra-life-card"><div class="hyra-img-placeholder hyra-img-placeholder--card">صورة</div><h3>في العمل</h3><p>يذكرك بالحركة ويحسن تركيزك</p></div>
+        <div class="hyra-life-card"><div class="hyra-img-placeholder hyra-img-placeholder--card">صورة</div><h3>أثناء الجري</h3><p>يسجل خطواتك ومسافاتك بدقة</p></div>
+        <div class="hyra-life-card"><div class="hyra-img-placeholder hyra-img-placeholder--card">صورة</div><h3>أثناء القيادة</h3><p>إشعارات وتنبيهات بدون تشتيت</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hyra-section hyra-band">
+    <div class="hyra-container">
+      <div class="hyra-section__head"><h2 class="hyra-h2">ماذا يقول عملاؤنا</h2></div>
+      <div class="hyra-reviews">
+        <div class="hyra-review">
+          <div class="hyra-stars">★★★★★</div>
+          <p class="hyra-review__quote">"أدق تحليل للنوم جربته في سوار ذكي، البيانات واضحة والتطبيق سهل"</p>
+          <div class="hyra-review__author"><span class="hyra-review__avatar">م</span><span>محمد العتيبي</span></div>
+        </div>
+        <div class="hyra-review">
+          <div class="hyra-stars">★★★★★</div>
+          <p class="hyra-review__quote">"بطارية قوية وتصميم أنيق وخفيف، صراحة فرق معاي في النوم والنشاط"</p>
+          <div class="hyra-review__author"><span class="hyra-review__avatar">س</span><span>سعد القحطاني</span></div>
+        </div>
+        <div class="hyra-review">
+          <div class="hyra-stars">★★★★★</div>
+          <p class="hyra-review__quote">"السوار ممتاز وينبته بلطف وما يزعج، أنصح كل من يعاني من الاستيقاظ المتعب"</p>
+          <div class="hyra-review__author"><span class="hyra-review__avatar">خ</span><span>خالد الشهراني</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hyra-section" id="faq">
+    <div class="hyra-container hyra-container--narrow">
+      <div class="hyra-section__head"><h2 class="hyra-h2">الأسئلة الشائعة</h2></div>
+      <div class="hyra-faq">
+        <details class="hyra-faq__item" open>
+          <summary>هل السوار يدعم اللغة العربية؟<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>نعم، السوار والتطبيق يدعمان اللغة العربية بشكل كامل.</p>
+        </details>
+        <details class="hyra-faq__item">
+          <summary>هل السوار مقاوم للماء؟<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>نعم، السوار بمعيار IP68 مقاوم للماء والغبار، ويتحمل الاستخدام اليومي والرياضة.</p>
+        </details>
+        <details class="hyra-faq__item">
+          <summary>هل يعمل مع أجهزة iPhone و Android؟<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>نعم، السوار متوافق مع أجهزة iPhone وAndroid عبر التطبيق المخصص.</p>
+        </details>
+        <details class="hyra-faq__item">
+          <summary>كم مدة الضمان؟<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>ضمان سنة كاملة ضد عيوب التصنيع.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="hyra-final">
+    <div class="hyra-final__glow"></div>
+    <div class="hyra-container hyra-final__grid">
+      <div class="hyra-final__media"><div class="hyra-img-placeholder">صورة (القسم الأخير)</div></div>
+      <div class="hyra-final__content">
+        <h2 class="hyra-h2" style="text-align:right">جاهز تبدأ يومك بأفضل طاقة؟</h2>
+        <p class="hyra-sub" style="text-align:right">اطلب سوار HYRA الذكي الآن وعش الفرق بنفسك.</p>
+        <a href="https://dfal8s.zid.store/auth/login?redirect_to=/checkout" class="hyra-btn hyra-btn--primary hyra-btn--lg">اطلب الآن</a>
+      </div>
+    </div>
+    <div class="hyra-container">
+      <div class="hyra-trust hyra-trust--footer">
+        <div class="hyra-trust__item"><span>🎧 دعم سعودي 24/7</span></div>
+        <div class="hyra-trust__item"><span>🔒 دفع آمن 100%</span></div>
+        <div class="hyra-trust__item"><span>✅ جودة مضمونة</span></div>
+        <div class="hyra-trust__item"><span>🚚 شحن سريع — من 1 إلى 3 أيام عمل</span></div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  <!-- /.hyra-page-content -->
+
+
+</div>
+
+<script>
+  function setTopbarOffset() {
+    var topbar = document.querySelector('#hyra-x .hyra-topbar');
+    var content = document.querySelector('#hyra-x .hyra-page-content');
+    if (topbar && content) { content.style.paddingTop = topbar.offsetHeight + 'px'; }
+  }
+  window.addEventListener('load', setTopbarOffset);
+  window.addEventListener('resize', setTopbarOffset);
+
+  // فتح/قفل قائمة الروابط في الموبايل عن طريق زرار السهم
+  var navToggle = document.getElementById('hyra-nav-toggle');
+  var navMenu = document.getElementById('hyra-nav');
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = navMenu.classList.toggle('is-open');
+      navToggle.classList.toggle('is-open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  document.querySelectorAll('#hyra-x a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var targetId = this.getAttribute('href');
+      if (!targetId || targetId.length < 2) return;
+      var target = document.querySelector(targetId);
+      if (!target) return;
+      var topbar = document.querySelector('#hyra-x .hyra-topbar');
+      var offset = (topbar ? topbar.offsetHeight : 0) + 16;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+      // قفل قائمة الموبايل بعد الضغط على أي رابط
+      if (navMenu) { navMenu.classList.remove('is-open'); }
+      if (navToggle) { navToggle.classList.remove('is-open'); navToggle.setAttribute('aria-expanded', 'false'); }
+    });
+  });
+
+  // تفعيل الرابط الحالي في الهيدر تلقائيًا حسب السكشن اللي احنا فيه أثناء السكرول
+  (function () {
+    var navLinks = document.querySelectorAll('#hyra-x .hyra-nav a[href^="#"]');
+    var sections = Array.prototype.map.call(navLinks, function (l) {
+      var id = l.getAttribute('href');
+      return id && id.length > 1 ? document.querySelector(id) : null;
+    }).filter(Boolean);
+
+    function setActiveOnScroll() {
+      if (!sections.length) return;
+      var topbar = document.querySelector('#hyra-x .hyra-topbar');
+      var offset = (topbar ? topbar.offsetHeight : 0) + 40;
+      var scrollPos = window.pageYOffset + offset;
+      var current = sections[0];
+      sections.forEach(function (sec) {
+        if (sec.offsetTop <= scrollPos) current = sec;
+      });
+      navLinks.forEach(function (link) {
+        link.classList.toggle('is-active', link.getAttribute('href') === '#' + current.id);
+      });
+    }
+    window.addEventListener('scroll', setActiveOnScroll, { passive: true });
+    window.addEventListener('load', setActiveOnScroll);
+    setActiveOnScroll();
+  })();
+
+</script>
+
+</body>
+</html>
