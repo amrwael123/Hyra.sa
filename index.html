@@ -166,13 +166,18 @@
   #hyra-x .hyra-faq__item summary::-webkit-details-marker { display: none; }
   #hyra-x .hyra-faq__item summary svg { color: var(--hyra-muted); transition: transform .2s ease; }
   #hyra-x .hyra-faq__item[open] summary svg { transform: rotate(180deg); }
-  #hyra-x .hyra-faq__item p { padding: 0 18px 16px; color: var(--hyra-muted); font-size: 14px; }
+  #hyra-x .hyra-faq__item .hyra-faq__answer { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .35s ease, opacity .3s ease; }
+  #hyra-x details.hyra-faq__item:not([open]) > .hyra-faq__answer { display: grid !important; }
+  #hyra-x .hyra-faq__item .hyra-faq__answer > p { overflow: hidden; min-height: 0; padding: 0 18px 16px; margin: 0; color: var(--hyra-muted); font-size: 14px; }
+  #hyra-x .hyra-faq__item[open] .hyra-faq__answer { grid-template-rows: 1fr; opacity: 1; }
+  #hyra-x .hyra-faq__item summary { transition: background .2s ease; }
 
   #hyra-x .hyra-final { position: relative; padding: 72px 0 52px; background: linear-gradient(180deg, transparent, #070D1C 30%); }
   #hyra-x .hyra-final__glow { position: absolute; inset: 0; background: radial-gradient(560px 280px at 50% 100%, rgba(43, 92, 210, 0.16), transparent 70%); pointer-events: none; }
   #hyra-x .hyra-final__grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
   #hyra-x .hyra-final__img { border-radius: 20px; }
   #hyra-x .hyra-final .hyra-btn { margin-top: 20px; }
+  #hyra-x #policy { position: relative; background: linear-gradient(180deg, #070D1C, transparent 55%); }
 
   #hyra-x .hyra-img-placeholder { border: 1px dashed rgba(120, 150, 220, 0.3); border-radius: 20px; overflow: hidden; background: rgba(43, 92, 210, 0.04); display:flex; align-items:center; justify-content:center; min-height:280px; color:#4a5a86; font-size:13px; }
   #hyra-x .hyra-img-placeholder--wide { min-height: 220px; }
@@ -310,6 +315,7 @@
         <a href="#features">المميزات</a>
         <a href="#specs">المواصفات</a>
         <a href="#faq">الأسئلة الشائعة</a>
+        <a href="#policy">سياسة الاستبدال والاسترجاع</a>
       </nav>
       <div class="hyra-header__actions">
         <a href="https://dfal8s.zid.store/auth/login?redirect_to=/checkout" class="hyra-btn hyra-btn--primary hyra-btn--sm">اطلب الآن</a>
@@ -433,12 +439,12 @@
       <div class="hyra-specs">
         <div class="hyra-specs__media"><img src="images/specs.jpg" alt="مواصفات سوار HYRA" class="hyra-hero__img"></div>
         <ul class="hyra-specs__list">
-          <li><div><strong>الشاشة</strong><span>LED  Display</span></div><em>💡</em></li>
-          <li><div><strong>البطارية</strong><span>تدوم من 10 إلي 14 يوم</span></div><em>🔋</em></li>
-          <li><div><strong>مقاومة الماء</strong><span> مقاوم للماء والغبار</span></div><em>💧</em></li>
-          <li><div><strong>محيط المعصم</strong><span>14سم - 20سم</span></div><em>📏</em></li>
+          <li><div><strong>الشاشة</strong><span>LED عالية الوضوح</span></div><em>💡</em></li>
+          <li><div><strong>البطارية</strong><span>تدوم حتى 10 أيام</span></div><em>🔋</em></li>
+          <li><div><strong>مقاومة الماء</strong><span>IP68 مقاوم للماء والغبار</span></div><em>💧</em></li>
+          <li><div><strong>محيط المعصم</strong><span>130mm – 235mm</span></div><em>📏</em></li>
           <li><div><strong>العرض</strong><span>16.5mm</span></div><em>↔️</em></li>
-          <li><div><strong>الطول</strong><span>240mm</span></div><em>↕️</em></li>
+          <li><div><strong>الطول</strong><span>77mm</span></div><em>↕️</em></li>
         </ul>
       </div>
     </div>
@@ -485,19 +491,19 @@
       <div class="hyra-faq">
         <details class="hyra-faq__item" open>
           <summary>هل السوار يدعم اللغة العربية؟<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p>نعم، السوار والتطبيق يدعمان اللغة العربية بشكل كامل.</p>
+          <div class="hyra-faq__answer"><p>نعم، السوار والتطبيق يدعمان اللغة العربية بشكل كامل.</p></div>
         </details>
         <details class="hyra-faq__item">
           <summary>هل السوار مقاوم للماء؟<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p>نعم، السوار بمعيار IP68 مقاوم للماء والغبار، ويتحمل الاستخدام اليومي والرياضة.</p>
+          <div class="hyra-faq__answer"><p>نعم، السوار بمعيار IP68 مقاوم للماء والغبار، ويتحمل الاستخدام اليومي والرياضة.</p></div>
         </details>
         <details class="hyra-faq__item">
           <summary>هل يعمل مع أجهزة iPhone و Android؟<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p>نعم، السوار متوافق مع أجهزة iPhone وAndroid عبر التطبيق المخصص.</p>
+          <div class="hyra-faq__answer"><p>نعم، السوار متوافق مع أجهزة iPhone وAndroid عبر التطبيق المخصص.</p></div>
         </details>
         <details class="hyra-faq__item">
           <summary>كم مدة الضمان؟<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p>ضمان سنة كاملة ضد عيوب التصنيع.</p>
+          <div class="hyra-faq__answer"><p>ضمان سنة كاملة ضد عيوب التصنيع.</p></div>
         </details>
       </div>
     </div>
@@ -519,6 +525,34 @@
         <div class="hyra-trust__item"><span>🔒 دفع آمن 100%</span></div>
         <div class="hyra-trust__item"><span>✅ جودة مضمونة</span></div>
         <div class="hyra-trust__item"><span>🚚 شحن سريع — من 1 إلى 3 أيام عمل</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hyra-section" id="policy">
+    <div class="hyra-container hyra-container--narrow">
+      <div class="hyra-section__head"><h2 class="hyra-h2">سياسة الاستبدال والاسترجاع</h2></div>
+      <div class="hyra-faq">
+        <details class="hyra-faq__item" open>
+          <summary>استلام الطلب<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="hyra-faq__answer"><p>يُعد الطلب مكتملًا ومنتهيًا بمجرد استلامه من شركة الشحن أو من قبل العميل، ولا يمكن إلغاؤه بعد ذلك إلا وفقًا لما تنص عليه هذه السياسة.</p></div>
+        </details>
+        <details class="hyra-faq__item">
+          <summary>رفض استلام الشحنة<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="hyra-faq__answer"><p>في حال تم شحن الطلب ورفض العميل استلامه أو لم يقم باستلامه لأي سبب لا يعود إلى خطأ من المتجر، يحق للمتجر خصم 25٪ من إجمالي قيمة الطلب لتغطية تكاليف الشحن ورسوم الإرجاع والإجراءات التشغيلية، ويتم إعادة المبلغ المتبقي للعميل.</p></div>
+        </details>
+        <details class="hyra-faq__item">
+          <summary>العيوب المصنعية<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="hyra-faq__answer"><p>إذا استلم العميل المنتج واتضح وجود عيب مصنعي، فيرجى التواصل مع خدمة العملاء خلال الفترة المحددة وإرفاق صور أو فيديو يوضح المشكلة. وبعد التحقق من الحالة، يتحمل المتجر جميع تكاليف الشحن، ويتم استبدال المنتج أو تعويض العميل وفقًا لما تقتضيه الحالة.</p></div>
+        </details>
+        <details class="hyra-faq__item">
+          <summary>الحالات غير المشمولة<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="hyra-faq__answer"><p>لا يشمل الضمان أو الاستبدال أو الاسترجاع أي أضرار ناتجة عن سوء الاستخدام، أو الكسر، أو السقوط، أو التعرض للماء أو السوائل، أو أي تلف ناتج عن الاستخدام المخالف لإرشادات المنتج.</p></div>
+        </details>
+        <details class="hyra-faq__item">
+          <summary>حق مراجعة الطلبات<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="hyra-faq__answer"><p>يحتفظ المتجر بحق مراجعة جميع طلبات الاستبدال أو الاسترجاع قبل الموافقة عليها، وذلك لضمان توافقها مع الشروط والأحكام الواردة في هذه السياسة.</p></div>
+        </details>
       </div>
     </div>
   </section>
